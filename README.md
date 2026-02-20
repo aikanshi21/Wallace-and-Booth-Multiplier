@@ -76,3 +76,9 @@ Design and Implementation of 8-bit Signed Booth and Wallace Tree Multipliers usi
    d) Digital Filters
    e) Cryptographic Units
    f) VLSI Arithmetic Units
+
+
+Overall Architecture
+
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/18f2e48b-a1d3-4d3f-a4c7-53e045b49567" />
+
