@@ -1,73 +1,53 @@
-# Wallace-and-Booth-Multiplier
+# Booth's Multiplier Analysis
 
-Design and Implementation of 8-bit Signed Booth and Wallace Tree Multipliers using Verilog HDL on FPGA
+🔷 Aim: Design and Comparative Analysis of 8-bit Booth Multiplier with Counter-Based and FSM-Based Control using Verilog HDL.
 
-1. Functional Specifications
+🔷 Comparison: 
+| Feature           | Without FSM        | With FSM       |
+| ----------------- | ------------------ | ---------------|
+| Control           | Counter            | State Machine  |
+| Readability       | Low                | High           |
+| Modularity        | Poor               | Better         |
+| Control Path      | Not separated      | Separated      |
+| Datapath          | Mixed with control | Separated      | 
+| Scalability       | Difficult          | Easy           |
+| Debugging         | Hard               | Easy           |
+| Reusability       | Low                | High           |
+| Industry Standard | ❌ No              | ✔ Yes         |            
 
-   | Parameter                 | Specification                          |
-   | ------------------------- | -------------------------------------- |
-   | Input Type                | Signed Binary Numbers                  |
-   | Input Bit-width           | 8-bit Multiplicand & Multiplier        |
-   | Output Bit-width          | 16-bit Product                         |
-   | Multiplication Algorithms | 1. Radix-2 Booth Algorithm             |
-   |                           | 2. Wallace Tree Multiplier             |
-   | Operation Type            | Signed Multiplication                  |
-   | Execution Type            | Sequential (Booth), Parallel (Wallace) |
+🔷 Structural Difference
 
-2. Hardware Specifications
+Without FSM:
 
-   | Component         | Description                  |
-   | ----------------- | ---------------------------- |
-   | Target Platform   | FPGA                         |
-   | FPGA Tool         | Xilinx Vivado                |
-   | HDL Used          | Verilog                      |
-   | Clock Frequency   | 100 MHz (Typical FPGA Clock) |
-   | Arithmetic Unit   | Adder/Subtractor             |
-   | Shifter           | Arithmetic Right Shifter     |
-   | Compressors Used  | Half Adder & Full Adder      |
-   | Wallace Reduction | CSA based                    |
-   | Controller        | Finite State Machine (FSM)   |
-   | Registers Used    | A, Q, Q-1                    |
-   | Counter Size      | 4-bit                        |
+      Always Block
+         ↓
+      Counter decides everything
+         ↓
+      ADD / SUB / SHIFT mixed
 
-3. Booth's Multiplier Specifications
+With FSM:
 
-   | Parameter            | Value                         |
-   | -------------------- | ----------------------------- |
-   | Algorithm Type       | Radix-2 Booth                 |
-   | Iterations Required  | 8 Clock Cycles                |
-   | Control Bits Used    | Q₀ and Q₋₁                    |
-   | Operations Supported | Add / Subtract / No Operation |
-   | Shift Type           | Arithmetic Shift Right        |
+      FSM (Control Path)
+              ↓
+      Generates control signals
+              ↓
+      Datapath executes operation
 
-4. Wallace Tree Multiplier Specifications
+      
+🔷 Hardware Performance:
 
-   | Parameter                  | Value                          |
-   | -------------------------- | ------------------------------ |
-   | Partial Product Generation | AND Gates                      |
-   | Reduction Technique        | Tree Compression               |
-   | Compressors Used           | Full Adders (3:2), Half Adders |
-   | Addition Method            | Parallel                       |
-   | Final Stage Adder          | Ripple Carry Adder             |
+| Parameter  | Without FSM | With FSM |
+| ---------- | ----------- | -------- |
+| LUTs Used  | ?           | ?        |
+| Flip-Flops | ?           | ?        |
+| Delay      | ?           | ?        |
+| Power      | ?           | ?        |
+| Slack      | ?           | ?        |
+| Area       | ?           | ?        |
 
-5. Performance Specifications
+🔷 Output Waveform of Counter Controlled Base Booth's Multiplier:
+<img width="831" height="401" alt="image" src="https://github.com/user-attachments/assets/4a1ce82f-f0ca-449a-a1af-e4a6fc621771" />
 
-   | Parameter      | Booth    | Wallace  |
-   | -------------- | -------- | -------- |
-   | Latency        | High     | Low      |
-   | Speed          | Moderate | High     |
-   | Area           | Low      | High     |
-   | Power          | Low      | Moderate |
-   | Parallelism    | No       | Yes      |
-   | Signed Support | Yes      | Yes      |
 
-7. Applications
-
-   a) DSP Processors
-   b) ALU Design
-   c) Image Processing
-   d) Digital Filters
-   e) Cryptographic Units
-   f) VLSI Arithmetic Units
 
 
