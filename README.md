@@ -36,14 +36,33 @@ With FSM:
       
 🔷 Hardware Performance:
 
-| Parameter  | Without FSM | With FSM |
-| ---------- | ----------- | -------- |
-| LUTs Used  | ?           | ?        |
-| Flip-Flops | ?           | ?        |
-| Delay      | ?           | ?        |
-| Power      | ?           | ?        |
-| Slack      | ?           | ?        |
-| Area       | ?           | ?        |
+| Parameter      | Without FSM (Counter-Based) | With FSM (FSM-Based) |
+| -------------- | --------------------------- | -------------------- |
+| **LUTs Used**  | Low                         | High                 |
+| **Flip-Flops** | Low                         | High                 |
+| **Delay**      | High                        | Low                  |
+| **Power**      | Low                         | High                 |
+| **Slack**      | Low Positive                | High Positive        |
+| **Area**       | Small                       | Large                |
+
+
+🔹 Counter-Based Booth Multiplier
+
+Uses: Counter, Comparator, Control logic via count value
+      Fewer states
+      Less control hardware
+      Longer combinational path
+      ➡️ More delay
+      ➡️ Less LUT usage
+
+🔹 FSM-Based Booth Multiplier
+
+Uses: State Register, Next State Logic, Output Logic
+      Better structured datapath control
+      Shorter combinational path
+      ➡️ Less delay
+      ➡️ More LUTs & Flip-Flops
+
 
 🔷 Output Waveform of Counter Controlled Base Booth's Multiplier:
 <img width="831" height="401" alt="image" src="https://github.com/user-attachments/assets/4a1ce82f-f0ca-449a-a1af-e4a6fc621771" />
